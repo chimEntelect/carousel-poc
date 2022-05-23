@@ -1,0 +1,21 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+$card-height: 250px;
+$card-width: 150px;
+
+.carousel-card {
+  height: $card-height;
+  width: $card-width;
+
+  .card {
+    height: 100%;
+  }
+}
+
+.selected {
+  height: $card-height * 2;
+  width: $card-width * 2;
+  .card {
+    border-bottom: solid 5px $yellow;
+  }
+}

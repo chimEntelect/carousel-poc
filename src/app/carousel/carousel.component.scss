@@ -1,0 +1,8 @@
+$btn-size: 40px;
+
+.carousel-component {
+  .btn.rounded-circle {
+    width: $btn-size;
+    height: $btn-size;
+  }
+}

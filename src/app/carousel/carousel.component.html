@@ -1,8 +1,52 @@
-<div class="row gx-5">
-  <div class="col d-flex" *ngFor="let item of items">
+<div class="carousel-component">
+  <header class="fs-4">What are you <b>here to do?</b></header>
+  <div class="d-flex justify-content-around align-items-center">
     <app-carousel-card
-      class="d-flex flex-fill"
+      *ngFor="let item of items"
       [item]="item"
     ></app-carousel-card>
+  </div>
+  <footer>
+    <button class="btn btn-dark rounded-circle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-chevron-left"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+        />
+      </svg>
+    </button>
+    <button class="btn btn-dark rounded-circle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-chevron-right"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+        />
+      </svg>
+    </button>
+  </footer>
+  <div class="form-check form-switch">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckDefault"
+    />
+    <label class="form-check-label" for="flexSwitchCheckDefault"
+      >(debug) Dark mode</label
+    >
   </div>
 </div>
