@@ -13,6 +13,7 @@ export class CarouselComponent implements OnInit {
     { title: 'Get a device', cta: { text: 'start here', href: '#' } },
     { title: 'Add a phone-line', cta: { text: 'start here', href: '#' } },
     { title: 'Upgrade', cta: { text: 'start here', href: '#' } },
+    { title: 'Downgrade', cta: { text: 'start here', href: '#' } },
   ];
 
   sortedItems: CarouselItem[] = [];
@@ -25,6 +26,10 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit(): void {
     this.spotlightItem(1);
+  }
+
+  itemVisible(displayIndex: number) {
+    return displayIndex < (this.view === 'desktop' ? 5 : 3);
   }
 
   spotlightItem(index: number) {

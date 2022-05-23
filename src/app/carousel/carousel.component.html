@@ -2,9 +2,10 @@
   <header class="fs-4">What are you <b>here to do?</b></header>
   <div class="d-flex justify-content-around align-items-center">
     <app-carousel-card
-      *ngFor="let item of sortedItems"
+      *ngFor="let item of sortedItems; index as idx"
       [item]="item"
       [selected]="item === selectedItem"
+      [ngClass]="{ 'd-none': !itemVisible(idx) }"
     ></app-carousel-card>
   </div>
   <footer class="row justify-content-around">
