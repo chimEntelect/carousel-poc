@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
 
+## Setup
+
+### Prerequisites
+
+- **Node LTS version 16** - Install from https://nodejs.org/en/download/
+- **Angular 13 CLI** - run the following: `npm install -g @angular/cli` to install the CLI
+
+### Installation
+
+Clone this repository and then follow the instructions below for "Development server".
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
