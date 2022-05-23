@@ -1,0 +1,13 @@
+<div class="flex-fill" *ngIf="item">
+  <div class="card shadow h-100">
+    <div class="mx-auto">
+      <img src="" class="card-img-top" alt="image cap" />
+    </div>
+    <div class="card-body">
+      <h4 class="card-title text-center">{{ item.title }}</h4>
+      <p class="text-center">
+        <a href="{{ item.cta.href }}">{{ item.cta.text }}</a>
+      </p>
+    </div>
+  </div>
+</div>
