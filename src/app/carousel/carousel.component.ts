@@ -42,4 +42,12 @@ export class CarouselComponent implements OnInit {
       this.sortedItems.push(this.items[(i + startIndex) % this.items.length]);
     }
   }
+
+  back() {
+    this.spotlightItem((this.selectedIndex || 0) - 1);
+  }
+
+  next() {
+    this.spotlightItem((this.selectedIndex || 0) + 1);
+  }
 }
