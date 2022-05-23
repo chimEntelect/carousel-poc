@@ -1,8 +1,20 @@
 $btn-size: 40px;
+$header-width: 17%;
 
 .carousel-component {
+  position: relative;
   .btn.rounded-circle {
     width: $btn-size;
     height: $btn-size;
+  }
+
+  header {
+    position: absolute;
+    width: $header-width;
+    left: $header-width;
+  }
+
+  footer {
+    margin-top: -90px;
   }
 }

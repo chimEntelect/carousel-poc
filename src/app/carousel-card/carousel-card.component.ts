@@ -8,6 +8,7 @@ import { CarouselItem } from '../carousel-item';
 })
 export class CarouselCardComponent implements OnInit {
   @Input() item?: CarouselItem;
+  @Input() selected?: boolean;
   constructor() {}
 
   ngOnInit(): void {}

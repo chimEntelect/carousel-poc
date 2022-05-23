@@ -14,7 +14,7 @@ $card-width: 150px;
 
 .selected {
   height: $card-height * 2;
-  width: $card-width * 2;
+  width: $card-width * 2.5;
   .card {
     border-bottom: solid 5px $yellow;
   }

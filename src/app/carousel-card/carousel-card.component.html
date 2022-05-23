@@ -1,11 +1,11 @@
-<div class="carousel-card" *ngIf="item">
+<div [ngClass]="{ 'carousel-card': true, selected: selected }" *ngIf="item">
   <div class="card shadow">
     <div class="mx-auto">
       <img src="" class="card-img-top" alt="image cap" />
     </div>
     <div class="card-body">
       <h4 class="card-title text-center">{{ item.title }}</h4>
-      <p class="text-center">
+      <p class="text-center" *ngIf="selected">
         <a href="{{ item.cta.href }}">{{ item.cta.text }}</a>
       </p>
     </div>

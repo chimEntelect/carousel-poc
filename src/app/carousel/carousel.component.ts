@@ -14,7 +14,32 @@ export class CarouselComponent implements OnInit {
     { title: 'Add a phone-line', cta: { text: 'start here', href: '#' } },
     { title: 'Upgrade', cta: { text: 'start here', href: '#' } },
   ];
+
+  sortedItems: CarouselItem[] = [];
+  selectedIndex?: number;
+  selectedItem?: CarouselItem;
+
+  view: 'desktop' | 'tablet' = 'desktop';
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.spotlightItem(1);
+  }
+
+  spotlightItem(index: number) {
+    this.selectedIndex =
+      Math.abs(index < 0 ? this.items.length - 1 + index : index) %
+      this.items.length;
+    this.selectedItem = this.items[this.selectedIndex];
+    const numVisibleCards = this.view === 'desktop' ? 5 : 3;
+    const midpointIndex = Math.floor(numVisibleCards / 2);
+    const startIndex =
+      (this.selectedIndex + this.items.length - midpointIndex) %
+      this.items.length;
+    this.sortedItems = [];
+    for (let i = 0; i < this.items.length; i++) {
+      this.sortedItems.push(this.items[(i + startIndex) % this.items.length]);
+    }
+  }
 }
