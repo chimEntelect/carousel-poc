@@ -5,7 +5,21 @@
 $btn-size: 40px;
 $header-width: 17%;
 
-.dark-theme {
+::ng-deep {
+  .dark-theme {
+    .bg-light {
+      background-color: $dark !important;
+    }
+
+    .text-dark {
+      color: $light !important;
+    }
+
+    .btn-left {
+      color: $dark !important;
+      background-color: $warning !important;
+    }
+  }
 }
 
 .carousel-component {
@@ -23,6 +37,9 @@ $header-width: 17%;
 
   footer {
     margin-top: -90px;
+  }
+
+  &.dark-theme {
   }
 }
 
