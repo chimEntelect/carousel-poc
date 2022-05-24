@@ -1,5 +1,12 @@
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/_mixins.scss";
+
 $btn-size: 40px;
 $header-width: 17%;
+
+.dark-theme {
+}
 
 .carousel-component {
   position: relative;
@@ -16,5 +23,21 @@ $header-width: 17%;
 
   footer {
     margin-top: -90px;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .carousel-component {
+    header {
+      left: $header-width / 2;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .carousel-component {
+    header {
+      left: 0;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CarouselItem } from '../carousel-item';
 
 @Component({
@@ -7,6 +7,8 @@ import { CarouselItem } from '../carousel-item';
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit {
+  private query: MediaQueryList;
+
   items: CarouselItem[] = [
     { title: 'Mobile internet', cta: { text: 'start here', href: '#' } },
     { title: 'Home internet', cta: { text: 'start here', href: '#' } },
@@ -16,17 +18,27 @@ export class CarouselComponent implements OnInit {
     { title: 'Downgrade', cta: { text: 'start here', href: '#' } },
   ];
 
+  isDarkMode = false;
   sortedItems: CarouselItem[] = [];
   selectedIndex?: number;
   selectedItem?: CarouselItem;
 
   view: 'desktop' | 'tablet' = 'desktop';
 
-  constructor() {}
+  constructor() {
+    this.query = window.matchMedia('(max-width: 991px)');
+    this.onMediaChange();
+    this.query.addEventListener('change', this.onMediaChange);
+  }
 
   ngOnInit(): void {
     this.spotlightItem(1);
   }
+
+  onMediaChange = () => {
+    this.view = this.query.matches ? 'tablet' : 'desktop';
+    this.spotlightItem(this.selectedIndex || 0);
+  };
 
   itemVisible(displayIndex: number) {
     return displayIndex < (this.view === 'desktop' ? 5 : 3);
@@ -54,5 +66,9 @@ export class CarouselComponent implements OnInit {
 
   next() {
     this.spotlightItem((this.selectedIndex || 0) + 1);
+  }
+
+  ngOnDestroy() {
+    this.query.removeEventListener('change', this.onMediaChange);
   }
 }

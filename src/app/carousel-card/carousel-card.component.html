@@ -1,23 +1,29 @@
 <div [ngClass]="{ 'carousel-card': true, selected: selected }" *ngIf="item">
-  <div class="card shadow">
-    <svg
-      class="bd-placeholder-img card-img-top"
-      width="100%"
-      [attr.height]="selected ? 200 : 120"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="Placeholder: Image cap"
-      preserveAspectRatio="xMidYMid slice"
-      focusable="false"
+  <div class="card shadow bg-light bg-gradient rounded-4">
+    <figure
+      [ngClass]="{
+        'h-selected': selected,
+        'd-flex align-items-center justify-content-center': true
+      }"
     >
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#868e96"></rect>
-      <text x="20%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-    </svg>
-    <div class="card-body">
-      <h4 class="card-title text-center">{{ item.title }}</h4>
-      <p class="text-center" *ngIf="selected">
-        <a href="{{ item.cta.href }}">{{ item.cta.text }}</a>
+      image cap
+    </figure>
+    <div class="card-body d-flex flex-column justify-content-evenly">
+      <p
+        [ngClass]="{
+          'card-title text-center': true,
+          'fs-3 fw-bold': selected,
+          'fs-5': !selected
+        }"
+      >
+        {{ item.title }}
+      </p>
+      <p [ngClass]="{ 'text-center': true }" *ngIf="selected">
+        <a
+          class="cta text-uppercase text-decoration-none text-reset fw-bold fs-6"
+          href="{{ item.cta.href }}"
+          >{{ item.cta.text }} <i class="bi bi-chevron-right ps-2"></i
+        ></a>
       </p>
     </div>
   </div>
