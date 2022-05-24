@@ -1,0 +1,30 @@
+<div [ngClass]="{ 'carousel-card': true, selected: selected }" *ngIf="item">
+  <div class="card shadow bg-light bg-gradient rounded-4">
+    <figure
+      [ngClass]="{
+        'h-selected': selected,
+        'd-flex align-items-center justify-content-center text-dark': true
+      }"
+    >
+      image cap
+    </figure>
+    <div class="card-body d-flex flex-column justify-content-evenly">
+      <p
+        [ngClass]="{
+          'card-title text-center text-dark': true,
+          'fs-3 fw-bold': selected,
+          'fs-5': !selected
+        }"
+      >
+        {{ item.title }}
+      </p>
+      <p [ngClass]="{ 'text-center': true }" *ngIf="selected">
+        <a
+          class="cta text-uppercase text-decoration-none text-reset fw-bold fs-6 text-dark"
+          href="{{ item.cta.href }}"
+          >{{ item.cta.text }} <i class="bi bi-chevron-right ps-2 text-dark"></i
+        ></a>
+      </p>
+    </div>
+  </div>
+</div>

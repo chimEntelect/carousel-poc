@@ -1,0 +1,33 @@
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/_mixins.scss";
+@import "~bootstrap/scss/utilities.scss";
+
+$card-height: 250px;
+$card-width: 150px;
+
+.carousel-card {
+  height: $card-height;
+  width: $card-width;
+
+  .card {
+    @include border-radius(1rem);
+    height: 100%;
+  }
+
+  figure {
+    height: 120px;
+
+    &.h-selected {
+      height: 200px;
+    }
+  }
+}
+
+.selected {
+  height: $card-height * 2;
+  width: $card-width * 2.5;
+  .card {
+    border-bottom: solid 5px $yellow;
+  }
+}
