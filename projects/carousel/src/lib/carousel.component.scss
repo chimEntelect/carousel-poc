@@ -43,7 +43,7 @@ $header-width: 17%;
 @include media-breakpoint-down(lg) {
   .carousel-component {
     header {
-      left: $header-width / 2;
+      left: calc($header-width / 2);
     }
   }
 }
