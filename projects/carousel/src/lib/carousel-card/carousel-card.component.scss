@@ -8,11 +8,11 @@ $card-width: 150px;
 
 .carousel-card {
   height: $card-height;
-  width: $card-width;
+  //width: $card-width;
 
   .card {
-    @include border-radius(1rem);
     height: 100%;
+    border: 0;
   }
 
   figure {
@@ -26,8 +26,9 @@ $card-width: 150px;
 
 .selected {
   height: $card-height * 2;
-  width: $card-width * 2.5;
+  //width: $card-width * 2.5;
   .card {
+    @include border-radius(1rem);
     border-bottom: solid 5px $yellow;
   }
 }

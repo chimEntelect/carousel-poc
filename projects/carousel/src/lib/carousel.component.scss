@@ -29,14 +29,13 @@ $header-width: 17%;
     height: $btn-size;
   }
 
-  header {
-    position: absolute;
-    width: $header-width;
-    left: $header-width;
+  section {
+    margin-top: -64px;
   }
 
   footer {
     margin-top: -90px;
+    margin-bottom: 50px;
   }
 }
 

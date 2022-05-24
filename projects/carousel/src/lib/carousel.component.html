@@ -1,13 +1,25 @@
 <div [ngClass]="{ 'carousel-component': true, 'dark-theme': isDarkMode }">
-  <header class="fs-4">What are you <b>here to do?</b></header>
-  <div class="d-flex justify-content-around align-items-center">
-    <app-carousel-card
+  <header
+    class="fs-4 col-lg-2 col-3 offset-lg-2"
+    [innerHTML]="caption"
+  ></header>
+  <section class="row align-items-center">
+    <div
+      [ngClass]="{
+        'col-2': item !== selectedItem && view === 'desktop',
+        'col-4': item === selectedItem && view === 'desktop',
+        'col-3': item !== selectedItem && view === 'tablet',
+        'col-6': item === selectedItem && view === 'tablet'
+      }"
       *ngFor="let item of sortedItems; index as idx"
-      [item]="item"
-      [selected]="item === selectedItem"
-      [ngClass]="{ 'd-none': !itemVisible(idx) }"
-    ></app-carousel-card>
-  </div>
+    >
+      <app-carousel-card
+        [item]="item"
+        [selected]="item === selectedItem"
+        [ngClass]="{ 'd-none': !itemVisible(idx) }"
+      ></app-carousel-card>
+    </div>
+  </section>
   <footer class="row justify-content-between">
     <div class="col-lg-4 col-md-2 text-end">
       <div class="me-4">
@@ -30,16 +42,4 @@
       </div>
     </div>
   </footer>
-  <div class="form-check form-switch">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      role="switch"
-      id="flexSwitchCheckDefault"
-      [(ngModel)]="isDarkMode"
-    />
-    <label class="form-check-label" for="flexSwitchCheckDefault"
-      >(debug) Dark mode</label
-    >
-  </div>
 </div>

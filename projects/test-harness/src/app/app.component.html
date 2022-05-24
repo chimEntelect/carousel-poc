@@ -1,3 +1,28 @@
 <div class="container">
-  <lib-carousel></lib-carousel>
+  <lib-carousel
+    [isDarkMode]="isDarkMode"
+    [items]="[
+      { title: 'Mobile internet', cta: { text: 'start here', href: '#' } },
+      { title: 'Home internet', cta: { text: 'start here', href: '#' } },
+      { title: 'Work internet', cta: { text: 'start here', href: '#' } },
+      { title: 'Get a device', cta: { text: 'get here', href: '#' } },
+      { title: 'Set a device', cta: { text: 'set here', href: '#' } },
+      { title: 'Add a phone-line', cta: { text: 'add here', href: '#' } },
+      { title: 'Upgrade', cta: { text: 'up here', href: '#' } },
+      { title: 'Downgrade', cta: { text: 'down here', href: '#' } }
+    ]"
+    [caption]="'What are you <b>here to do?</b>'"
+  ></lib-carousel>
+  <div class="form-check form-switch" *ngIf="canChangeTheme">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckDefault"
+      [(ngModel)]="isDarkMode"
+    />
+    <label class="form-check-label" for="flexSwitchCheckDefault"
+      >(debug) Dark mode</label
+    >
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CarouselItem } from './carousel-item';
 
 @Component({
@@ -7,23 +7,18 @@ import { CarouselItem } from './carousel-item';
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit {
-  private query: MediaQueryList;
+  @Input() items: CarouselItem[] = [];
+  @Input() isDarkMode = false;
+  @Input() caption = '';
 
-  items: CarouselItem[] = [
-    { title: 'Mobile internet', cta: { text: 'start here', href: '#' } },
-    { title: 'Home internet', cta: { text: 'start here', href: '#' } },
-    { title: 'Get a device', cta: { text: 'start here', href: '#' } },
-    { title: 'Add a phone-line', cta: { text: 'start here', href: '#' } },
-    { title: 'Upgrade', cta: { text: 'start here', href: '#' } },
-    { title: 'Downgrade', cta: { text: 'start here', href: '#' } },
-  ];
-
-  isDarkMode = false;
   sortedItems: CarouselItem[] = [];
   selectedIndex?: number;
   selectedItem?: CarouselItem;
-
   view: 'desktop' | 'tablet' = 'desktop';
+
+  private query: MediaQueryList;
+  private desktopCards = 5;
+  private tabletCards = 3;
 
   constructor() {
     this.query = window.matchMedia('(max-width: 991px)');
@@ -41,16 +36,14 @@ export class CarouselComponent implements OnInit {
   };
 
   itemVisible(displayIndex: number) {
-    return displayIndex < (this.view === 'desktop' ? 5 : 3);
+    return displayIndex < this.getNumberOfCardsToDisplay();
   }
 
   spotlightItem(index: number) {
-    this.selectedIndex =
-      Math.abs(index < 0 ? this.items.length - 1 + index : index) %
-      this.items.length;
+    this.selectedIndex = (this.items.length + index) % this.items.length;
+
     this.selectedItem = this.items[this.selectedIndex];
-    const numVisibleCards = this.view === 'desktop' ? 5 : 3;
-    const midpointIndex = Math.floor(numVisibleCards / 2);
+    const midpointIndex = Math.floor(this.getNumberOfCardsToDisplay() / 2);
     const startIndex =
       (this.selectedIndex + this.items.length - midpointIndex) %
       this.items.length;
@@ -70,5 +63,9 @@ export class CarouselComponent implements OnInit {
 
   ngOnDestroy() {
     this.query.removeEventListener('change', this.onMediaChange);
+  }
+
+  private getNumberOfCardsToDisplay() {
+    return this.view === 'desktop' ? this.desktopCards : this.tabletCards;
   }
 }
